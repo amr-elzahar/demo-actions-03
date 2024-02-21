@@ -1,5 +1,5 @@
 name: Build and Push Docker Images
-on: workflow_dispatch
+on: push
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -13,3 +13,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Buld and Push
         uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: amrelzahar/github-actions:latest
